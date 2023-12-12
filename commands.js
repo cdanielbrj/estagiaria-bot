@@ -3,7 +3,7 @@ import { InstallGlobalCommands } from './utils.js';
 
 const TEST_COMMAND = {
   name: 'test',
-  description: 'Basic command',
+  description: 'Só pra saber se eu tô funcionando',
   type: 1,
 };
 
@@ -13,6 +13,12 @@ const GABE_COMMAND = {
   type: 1,
 };
 
-const ALL_COMMANDS = [TEST_COMMAND, GABE_COMMAND];
+const BELIZA_COMMAND = {
+  name: 'beliza',
+  description: 'Trás a gelada!',
+  type: 1,
+};
+
+const ALL_COMMANDS = [TEST_COMMAND, GABE_COMMAND, BELIZA_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
