@@ -43,9 +43,18 @@ exec('node commands.js', (error, stdout, stderr) => {
         });
       }
 
+      // "tiktok" command
+      if (name === 'tiktok') {
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: 'Toda essa canalhice fica lá no TikTok -> https://www.tiktok.com/@seehden',
+          },
+        });
+      }
+
       // "gabe" command
       if (name === 'gabe') {
-
         const messages = [
           'Vai tomar no cu, Gabe',
           '"Ti fode ai menor" é o que o Gabe certamente diria agora',
@@ -67,10 +76,52 @@ exec('node commands.js', (error, stdout, stderr) => {
 
       // "beliza" command
       if (name === 'beliza') {
-
         const messages = [
           'O modo "Globeliza" só está disponível durante o carnaval, tenta de novo em fevereiro',
           'https://media.giphy.com/media/W0E8iMqMDemxI0q24K/giphy.gif',
+          'Se o Belizário nunca apostou 100zão em algum jogo do bicho eu sou um microondas',
+        ];
+
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        const randomMessage = messages[randomIndex];
+
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: randomMessage,
+          },
+        });
+      }
+
+      // "negao" command
+      if (name === 'negao') {
+        const messages = [
+          '"Aqui acabou" é o que o negão certamente diria agora',
+          'Isabeeeeeeeeeeeeeeeel',
+          'Requisita!',
+          'Pô agora ele tá no sogro, tenta de novo semana que vem fazendo o favor',
+          'Aposto 10zão com você agora que ele tá fazendo outra build no fifa',
+          'Quebra tudo negão, se foda kkkk',
+        ];
+
+        const randomIndex = Math.floor(Math.random() * messages.length);
+        const randomMessage = messages[randomIndex];
+
+        return res.send({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: randomMessage,
+          },
+        });
+      }
+
+      // "vitin" command
+      if (name === 'vitin') {
+        const messages = [
+          'CHUTA PRO GOL MEU EGOÍSTA, MEU ATACANTE NATO!',
+          'Fato curioso: Já carregou mais animal em ranked que Noé na Arca',
+          'Cassino? Hoje? Oi? Você disse "Abrir caixa no CS"?',
+          'Mas que crl de build é essa que não corre, não chuta e não passa, Negão?',
         ];
 
         const randomIndex = Math.floor(Math.random() * messages.length);
