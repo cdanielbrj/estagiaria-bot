@@ -7,10 +7,6 @@
   "engines": {
     "node": "16.x"
   },
-  "scripts": {
-    "master": "node app.js",
-    "dev": "nodemon app.js"
-  },
   "author": "Daniel Carvalho",
   "dependencies": {
     "discord-interactions": "^3.2.0",
