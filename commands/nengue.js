@@ -1,12 +1,15 @@
 import { InteractionResponseType } from 'discord-interactions';
 
-const teste = {
-    name: 'teste',
+const nengue = {
+    name: 'nengue',
     execute() {
         const messages = [
-            'Tô funcionando, tudo namoral',
-            'Fala comigo, tô viva, relaxou',
-            'Funcional e operante, tudo certo por aqui',
+            '"Aqui acabou" é o que o negão certamente diria agora',
+            'Isabeeeeeeeeeeeeeeeel',
+            'Requisita!',
+            'Pô agora ele tá no sogro, tenta de novo semana que vem fazendo o favor',
+            'Aposto 10zão com você agora que ele tá fazendo outra build no fifa',
+            'Quebra tudo negão, se foda kkkk',
         ];
 
         const randomIndex = Math.floor(Math.random() * messages.length);
@@ -21,4 +24,4 @@ const teste = {
     },
 };
 
-export default teste;
+export default nengue;

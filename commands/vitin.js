@@ -1,12 +1,13 @@
 import { InteractionResponseType } from 'discord-interactions';
 
-const teste = {
-    name: 'teste',
+const vitin = {
+    name: 'vitin',
     execute() {
         const messages = [
-            'Tô funcionando, tudo namoral',
-            'Fala comigo, tô viva, relaxou',
-            'Funcional e operante, tudo certo por aqui',
+            'CHUTA PRO GOL MEU EGOÍSTA, MEU ATACANTE NATO!',
+            'Fato curioso: Já carregou mais animal em ranked que Noé na Arca',
+            'Cassino? Hoje? Oi? Você disse "Abrir caixa no CS"?',
+            'Mas que caralho de build é essa que não corre, não chuta e não passa, Negão?',
         ];
 
         const randomIndex = Math.floor(Math.random() * messages.length);
@@ -21,4 +22,4 @@ const teste = {
     },
 };
 
-export default teste;
+export default vitin;

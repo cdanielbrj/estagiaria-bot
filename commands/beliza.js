@@ -1,12 +1,12 @@
 import { InteractionResponseType } from 'discord-interactions';
 
-const teste = {
-    name: 'teste',
+const beliza = {
+    name: 'beliza',
     execute() {
         const messages = [
-            'Tô funcionando, tudo namoral',
-            'Fala comigo, tô viva, relaxou',
-            'Funcional e operante, tudo certo por aqui',
+            'O modo "Globeliza" só está disponível durante o carnaval, tenta de novo em fevereiro',
+            'https://media.giphy.com/media/W0E8iMqMDemxI0q24K/giphy.gif',
+            'Se o Belizário nunca apostou 100zão em algum jogo do bicho eu sou um microondas',
         ];
 
         const randomIndex = Math.floor(Math.random() * messages.length);
@@ -21,4 +21,4 @@ const teste = {
     },
 };
 
-export default teste;
+export default beliza;

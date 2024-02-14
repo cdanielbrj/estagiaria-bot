@@ -1,12 +1,12 @@
 import { InteractionResponseType } from 'discord-interactions';
 
-const teste = {
-    name: 'teste',
+const tiktok = {
+    name: 'tiktok',
     execute() {
         const messages = [
-            'Tô funcionando, tudo namoral',
-            'Fala comigo, tô viva, relaxou',
-            'Funcional e operante, tudo certo por aqui',
+            'Toda essa canalhice fica lá no TikTok -> https://www.tiktok.com/@seehden',
+            'Você ainda não me segue pra ver esse conteúdo duvidoso? Tá de bobeira aí... -> https://www.tiktok.com/@seehden',
+            'Follow + Like = Humilde -> https://www.tiktok.com/@seehden',
         ];
 
         const randomIndex = Math.floor(Math.random() * messages.length);
@@ -21,4 +21,4 @@ const teste = {
     },
 };
 
-export default teste;
+export default tiktok;

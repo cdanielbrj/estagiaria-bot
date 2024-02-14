@@ -10,13 +10,12 @@ import {
 } from 'discord-interactions';
 import { VerifyDiscordRequest } from './utils.js';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
 const app = express();
 const PORT = process.env.PORT || 25709;
 app.use(express.json({ verify: VerifyDiscordRequest(process.env.PUBLIC_KEY) }));
 
 const commands = new Map();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 async function loadCommands() {
   const commandsPath = path.join(__dirname, 'commands');
@@ -41,7 +40,7 @@ exec('node commands.js', (error, stdout, stderr) => {
   console.log(`Comandos atualizados com sucesso! ${stdout}`);
   
   loadCommands().then(() => {
-    app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
+    app.listen(PORT, () => console.log(`Funcionando na porta: ${PORT}`));
   }).catch(console.error);
 });
 

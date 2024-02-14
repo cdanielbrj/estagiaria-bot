@@ -7,7 +7,7 @@ const TEST_COMMAND = {
   type: 1,
 };
 
-/* const GABE_COMMAND = {
+const GABE_COMMAND = {
   name: 'gabe',
   description: 'Meu drogado favorito <3',
   type: 1,
@@ -19,9 +19,9 @@ const BELIZA_COMMAND = {
   type: 1,
 };
 
-const NEGAO_COMMAND = {
-  name: 'negao',
-  description: '*Sons de agressão doméstica*',
+const NENGUE_COMMAND = {
+  name: 'nengue',
+  description: 'Apelido censurado',
   type: 1,
 };
 
@@ -37,12 +37,6 @@ const TTK_COMMAND = {
   type: 1,
 };
 
-const NUKE_COMMAND = {
-  name: 'nuke',
-  description: 'Vai tudo embora :)',
-  type: 1,
-}; */
-
-const ALL_COMMANDS = [TEST_COMMAND];
+const ALL_COMMANDS = [TEST_COMMAND, GABE_COMMAND, BELIZA_COMMAND, NENGUE_COMMAND, VITIN_COMMAND, TTK_COMMAND];
 
 InstallGlobalCommands(process.env.APP_ID, ALL_COMMANDS);
