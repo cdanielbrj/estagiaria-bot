@@ -20,6 +20,7 @@
   "homepage": "https://github.com/cdanielbrj/estagiaria-bot#readme",
   "dependencies": {
     "discord.js": "^14.21.0",
-    "dotenv": "^17.0.0"
+    "dotenv": "^17.0.0",
+    "openai": "^5.8.2"
   }
 }
