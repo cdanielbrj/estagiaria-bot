@@ -1,21 +1,25 @@
 {
-  "name": "estagiaria",
+  "name": "estagiaria-bot",
   "version": "1.0.0",
   "description": "Estagiária - Discord's Bot",
-  "main": "app.js",
   "type": "module",
-  "engines": {
-    "node": "18.x"
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Daniel Carvalho",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cdanielbrj/estagiaria-bot.git"
+  },
+  "keywords": [],
+  "author": "Daniel 'seeHden' Conceição",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cdanielbrj/estagiaria-bot/issues"
+  },
+  "homepage": "https://github.com/cdanielbrj/estagiaria-bot#readme",
   "dependencies": {
-    "discord-interactions": "^3.2.0",
-    "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1",
-    "express": "^4.18.2",
-    "node-fetch": "^3.3.2"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.15"
+    "discord.js": "^14.21.0",
+    "dotenv": "^17.0.0"
   }
 }
