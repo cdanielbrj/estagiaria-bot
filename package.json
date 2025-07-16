@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Estagiária - Discord's Bot",
   "type": "module",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
   "dependencies": {
     "discord.js": "^14.21.0",
     "dotenv": "^17.0.0",
+    "node-fetch": "^3.3.2",
     "openai": "^5.8.2"
   }
 }
