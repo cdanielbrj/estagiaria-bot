@@ -1,0 +1,110 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Build test image
+        run: docker build --target test --tag aira-gatse:ci-check .
+
+      - name: Audit dependencies inside Docker
+        run: docker run --rm aira-gatse:ci-check npm audit --audit-level=low
+
+      - name: Run tests inside Docker
+        run: docker run --rm aira-gatse:ci-check npm test
+
+      - name: Build runtime image
+        run: docker build --target runtime --tag aira-gatse:ci .
+
+  publish:
+    needs: build
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@65b78e6e13532edd9afa3aa52ac7964289d1a9c1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and publish Docker image
+        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        with:
+          context: .
+          target: runtime
+          push: true
+          build-args: |
+            APP_REVISION=${{ github.sha }}
+          tags: |
+            ghcr.io/${{ github.repository }}:latest
+            ghcr.io/${{ github.repository }}:${{ github.sha }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+
+  tag:
+    needs: [build, publish]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Read release version
+        id: version
+        shell: bash
+        run: |
+          current_version="$(node -p "require('./package.json').version")"
+          previous_version=""
+
+          if git cat-file -e "${GITHUB_SHA}^:package.json" 2>/dev/null; then
+            previous_version="$(git show "${GITHUB_SHA}^:package.json" | node -p 'JSON.parse(require("node:fs").readFileSync(0, "utf8")).version')"
+          fi
+
+          echo "tag=v${current_version}" >> "$GITHUB_OUTPUT"
+          echo "changed=$([[ "$current_version" != "$previous_version" ]] && echo true || echo false)" >> "$GITHUB_OUTPUT"
+
+      - name: Create annotated version tag
+        if: steps.version.outputs.changed == 'true'
+        env:
+          TAG: ${{ steps.version.outputs.tag }}
+        shell: bash
+        run: |
+          git fetch --tags --force
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git rev-parse --verify --quiet "refs/tags/${TAG}" >/dev/null; then
+            existing_commit="$(git rev-list -n 1 "$TAG")"
+            if [ "$existing_commit" = "$GITHUB_SHA" ]; then
+              echo "Tag ${TAG} already points to this commit."
+              exit 0
+            fi
+
+            echo "Tag ${TAG} already points to ${existing_commit}, not ${GITHUB_SHA}." >&2
+            exit 1
+          fi
+
+          git tag --annotate "$TAG" --message "Release ${TAG}" "$GITHUB_SHA"
+          git push origin "$TAG"

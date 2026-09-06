@@ -1,27 +1,29 @@
 {
-  "name": "estagiaria-bot",
-  "version": "1.0.0",
-  "description": "Estagiária - Discord's Bot",
+  "name": "aira-gatse",
+  "version": "0.2.0",
+  "description": "One identity with adaptive cognition and multiple execution styles. Aira Gatse for newcomers, Estagiária to old friends.",
   "type": "module",
-  "main": "index.js",
+  "private": true,
+  "main": "src/main.js",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/main.js",
+    "test": "node --test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cdanielbrj/estagiaria-bot.git"
+    "url": "git+https://github.com/cdanielbrj/aira-gatse.git"
   },
   "keywords": [],
   "author": "Daniel 'seeHden' Conceição",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cdanielbrj/estagiaria-bot/issues"
+    "url": "https://github.com/cdanielbrj/aira-gatse/issues"
   },
-  "homepage": "https://github.com/cdanielbrj/estagiaria-bot#readme",
+  "homepage": "https://github.com/cdanielbrj/aira-gatse#readme",
   "dependencies": {
-    "discord.js": "^14.21.0",
-    "dotenv": "^17.0.0",
-    "node-fetch": "^3.3.2",
-    "openai": "^5.8.2"
+    "discord.js": "14.27.0"
   }
 }
